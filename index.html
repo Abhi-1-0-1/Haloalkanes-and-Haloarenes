@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alkyl & Aryl Halides — Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #161920;
+    --card: #1e2230;
+    --border: #2a2f42;
+    --accent: #5ee7b0;
+    --accent2: #f7c948;
+    --accent3: #e05c7b;
+    --accent4: #7b9fff;
+    --text: #e8eaf2;
+    --muted: #7a8099;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lora', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #0d0f14 0%, #141828 60%, #0d1520 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 40px 28px;
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    backdrop-filter: blur(12px);
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+    color: var(--accent);
+  }
+  .logo span { color: var(--accent2); }
+  .progress-bar-wrap {
+    flex: 1; max-width: 320px; margin: 0 32px;
+  }
+  .progress-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .progress-track {
+    background: var(--border);
+    border-radius: 99px;
+    height: 6px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.5s cubic-bezier(.4,0,.2,1);
+    width: 0%;
+  }
+  .score-badge {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    padding: 6px 16px;
+    color: var(--accent2);
+    white-space: nowrap;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    gap: 6px;
+    padding: 16px 40px;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 99px;
+    padding: 7px 18px;
+    color: var(--muted);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover { color: var(--text); border-color: var(--accent); }
+  .nav-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #0d0f14;
+  }
+
+  /* MAIN LAYOUT */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* SECTIONS */
+  .section { display: none; animation: fadeIn 0.35s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
+
+  .section-hero {
+    margin-bottom: 36px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 2rem;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .section-title .tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 8px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--accent2);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-title .icon {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  /* TABLES */
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin-top: 8px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .styled-table th {
+    background: rgba(94,231,176,0.12);
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+  }
+  .styled-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid rgba(42,47,66,0.6);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .styled-table tr:last-child td { border-bottom: none; }
+  .styled-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .styled-table td:first-child { font-family: 'DM Mono', monospace; font-size: 0.82rem; color: var(--accent4); }
+
+  /* HIGHLIGHT BOXES */
+  .highlight-box {
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    border-left: 3px solid;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .highlight-box.green  { background: rgba(94,231,176,0.06); border-color: var(--accent); }
+  .highlight-box.yellow { background: rgba(247,201,72,0.06);  border-color: var(--accent2); }
+  .highlight-box.red    { background: rgba(224,92,123,0.06);  border-color: var(--accent3); }
+  .highlight-box.blue   { background: rgba(123,159,255,0.06); border-color: var(--accent4); }
+  .highlight-box strong { font-family: 'Syne', sans-serif; display: block; margin-bottom: 4px; font-size: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase; }
+
+  /* QUIZ */
+  .quiz-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .quiz-number {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .quiz-question {
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 20px;
+    line-height: 1.55;
+  }
+  .quiz-options {
+    display: grid;
+    gap: 10px;
+  }
+  .quiz-option {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 18px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    transition: all 0.18s;
+    text-align: left;
+    color: var(--text);
+    font-family: 'Lora', serif;
+  }
+  .quiz-option:hover:not(:disabled) { border-color: var(--accent4); background: rgba(123,159,255,0.06); }
+  .quiz-option.correct  { border-color: var(--accent)  !important; background: rgba(94,231,176,0.1)  !important; color: var(--accent);  }
+  .quiz-option.wrong    { border-color: var(--accent3) !important; background: rgba(224,92,123,0.1)  !important; color: var(--accent3); }
+  .quiz-option:disabled { cursor: default; }
+  .quiz-feedback {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    display: none;
+  }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct-fb { background: rgba(94,231,176,0.08); color: var(--accent); border: 1px solid rgba(94,231,176,0.2); }
+  .quiz-feedback.wrong-fb   { background: rgba(224,92,123,0.08); color: var(--accent3); border: 1px solid rgba(224,92,123,0.2); }
+
+  /* FLASHCARDS */
+  .flashcard-container { perspective: 1000px; margin-bottom: 24px; }
+  .flashcard {
+    width: 100%;
+    min-height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(.4,0,.2,1);
+    cursor: pointer;
+    border-radius: var(--radius);
+  }
+  .flashcard.flipped { transform: rotateY(180deg); }
+  .flashcard-face {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .flashcard-front {
+    background: linear-gradient(135deg, var(--card), #1a1f30);
+    border-color: var(--accent4);
+  }
+  .flashcard-back {
+    background: linear-gradient(135deg, #151d14, #1a2420);
+    border-color: var(--accent);
+    transform: rotateY(180deg);
+  }
+  .flashcard-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .flashcard-front .flashcard-label { color: var(--accent4); }
+  .flashcard-back  .flashcard-label { color: var(--accent); }
+  .flashcard-content {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .flashcard-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .fc-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px 24px;
+    border-radius: 99px;
+    cursor: pointer;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    transition: all 0.18s;
+  }
+  .fc-btn:hover { border-color: var(--accent4); color: var(--accent4); }
+  .fc-counter {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    min-width: 60px;
+    text-align: center;
+  }
+
+  /* REACTION EXPLORER */
+  .rxn-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .rxn-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .rxn-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
+  .rxn-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--accent2);
+    margin-bottom: 8px;
+  }
+  .rxn-equation {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .rxn-detail {
+    display: none;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+    font-size: 0.87rem;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .rxn-detail.open { display: block; }
+  .rxn-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    padding: 3px 10px;
+    border-radius: 99px;
+    margin-right: 6px;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .tag-sn1 { background: rgba(224,92,123,0.15); color: var(--accent3); }
+  .tag-sn2 { background: rgba(94,231,176,0.12); color: var(--accent); }
+  .tag-free { background: rgba(247,201,72,0.12); color: var(--accent2); }
+  .tag-e2  { background: rgba(123,159,255,0.12); color: var(--accent4); }
+  .tag-ox  { background: rgba(180,120,255,0.12); color: #c07fff; }
+
+  /* COMPARISON TOGGLE */
+  .compare-toggle {
+    display: flex;
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 20px;
+    width: fit-content;
+  }
+  .cmp-btn {
+    padding: 9px 28px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+  .cmp-btn.active { background: var(--card); color: var(--text); }
+
+  /* TREND VISUALIZER */
+  .trend-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .trend-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    min-width: 90px;
+  }
+  .trend-bar {
+    height: 20px;
+    border-radius: 5px;
+    transition: width 1s cubic-bezier(.4,0,.2,1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+  }
+  .trend-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: #0d0f14;
+    font-weight: 600;
+  }
+  .trend-track { flex: 1; background: var(--surface); border-radius: 5px; overflow: hidden; border: 1px solid var(--border); }
+
+  /* PILL BADGES */
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 99px;
+    font-size: 0.72rem;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    margin-left: 6px;
+  }
+  .badge-g { background: rgba(94,231,176,0.15); color: var(--accent); }
+  .badge-y { background: rgba(247,201,72,0.15);  color: var(--accent2); }
+  .badge-r { background: rgba(224,92,123,0.15);  color: var(--accent3); }
+
+  /* LIST ITEMS */
+  ul.styled-list {
+    list-style: none;
+    padding: 0;
+  }
+  ul.styled-list li {
+    padding: 8px 0 8px 22px;
+    position: relative;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    border-bottom: 1px solid rgba(42,47,66,0.4);
+  }
+  ul.styled-list li:last-child { border-bottom: none; }
+  ul.styled-list li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  /* MECHANISM STEPPER */
+  .stepper { display: flex; flex-direction: column; gap: 0; }
+  .step {
+    display: flex;
+    gap: 16px;
+    position: relative;
+  }
+  .step-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .step-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    z-index: 1;
+  }
+  .step-connector {
+    flex: 1;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    min-height: 24px;
+    margin: 4px 0;
+  }
+  .step-body {
+    flex: 1;
+    padding-bottom: 24px;
+  }
+  .step-body h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .step-body p {
+    font-size: 0.87rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  /* QUIZ RESET */
+  .quiz-reset-btn {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 99px;
+    padding: 10px 28px;
+    cursor: pointer;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-top: 24px;
+    display: block;
+    transition: all 0.18s;
+  }
+  .quiz-reset-btn:hover { background: var(--accent); color: #0d0f14; }
+
+  .math-inline { font-family: 'DM Mono', monospace; font-size: 0.85em; color: var(--accent4); }
+
+  /* responsive */
+  @media(max-width:600px) {
+    header { padding: 16px 16px; flex-wrap: wrap; gap: 10px; }
+    nav { padding: 12px 16px; }
+    main { padding: 24px 12px 60px; }
+    .progress-bar-wrap { display: none; }
+    .section-title { font-size: 1.5rem; }
+  }
+
+  .mjx-container { display: inline-block !important; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">R-X &amp; <span>Ar-X</span></div>
+  <div class="progress-bar-wrap">
+    <div class="progress-label">Quiz Progress</div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+  <div class="score-badge" id="scoreBadge">Score: 0 / 0</div>
+</header>
+
+<nav>
+  <button class="nav-btn active" onclick="showSection('overview')">📋 Overview</button>
+  <button class="nav-btn" onclick="showSection('nomenclature')">🏷️ Nomenclature</button>
+  <button class="nav-btn" onclick="showSection('bonding')">🔗 C–X Bond</button>
+  <button class="nav-btn" onclick="showSection('prep')">⚗️ Preparation</button>
+  <button class="nav-btn" onclick="showSection('sn')">🔄 SN1 vs SN2</button>
+  <button class="nav-btn" onclick="showSection('elimination')">💨 Elimination</button>
+  <button class="nav-btn" onclick="showSection('polyhalogen')">☠️ Polyhalogen</button>
+  <button class="nav-btn" onclick="showSection('aryl')">💎 Aryl Inertness</button>
+  <button class="nav-btn" onclick="showSection('flashcards')">🃏 Flashcards</button>
+  <button class="nav-btn" onclick="showSection('quiz')">🎯 Quiz</button>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════ OVERVIEW ═══════════════════════════════ -->
+<div class="section active" id="section-overview">
+  <div class="section-hero">
+    <div class="section-title">
+      <span class="tag">Chapter 1</span>
+      Classification of Halides
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(94,231,176,0.12)">🧪</div>Alkyl Halide Types</div>
+    <p style="font-size:0.9rem;color:var(--muted);margin-bottom:16px">Halogen is on an <strong style="color:var(--text)">sp³</strong> carbon.</p>
+    <table class="styled-table">
+      <thead><tr><th>Type</th><th>Structure</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Primary (1°)</td>
+          <td>\(R\text{-}CH_2\text{-}X\)</td>
+          <td>\(CH_3CH_2Cl\)</td>
+        </tr>
+        <tr>
+          <td>Secondary (2°)</td>
+          <td>\(R_2\text{-}CH\text{-}X\)</td>
+          <td>\((CH_3)_2CHBr\)</td>
+        </tr>
+        <tr>
+          <td>Tertiary (3°)</td>
+          <td>\(R_3\text{-}C\text{-}X\)</td>
+          <td>\((CH_3)_3CCl\)</td>
+        </tr>
+        <tr>
+          <td>Allylic</td>
+          <td>\(C=C\text{-}CH_2\text{-}X\)</td>
+          <td>\(CH_2=CH\text{-}CH_2Cl\)</td>
+        </tr>
+        <tr>
+          <td>Benzylic</td>
+          <td>\(Ar\text{-}CH_2\text{-}X\)</td>
+          <td>\(C_6H_5CH_2Br\)</td>
+        </tr>
+        <tr>
+          <td>Vinylic</td>
+          <td>\(C=C\text{-}X\) (on sp²)</td>
+          <td>\(CH_2=CHCl\)</td>
+        </tr>
+        <tr>
+          <td>Aryl Halide</td>
+          <td>\(Ar\text{-}X\) (ring sp²)</td>
+          <td>\(C_6H_5Br\)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(247,201,72,0.12)">📌</div>Key Distinctions to Remember</div>
+    <div class="highlight-box yellow">
+      <strong>Allylic vs Vinylic</strong>
+      Allylic: X is on the sp³ carbon <em>next to</em> the double bond. Vinylic: X is directly <em>on</em> the sp² carbon of the double bond. Crucial difference for reactivity!
+    </div>
+    <div class="highlight-box blue">
+      <strong>Benzylic vs Aryl</strong>
+      Benzylic: X is on the sp³ carbon attached to the ring (–CH₂X). Aryl: X is directly on the ring's sp² carbon. Aryl halides are much less reactive in SN reactions.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ NOMENCLATURE ═══════════════════════════════ -->
+<div class="section" id="section-nomenclature">
+  <div class="section-hero">
+    <div class="section-title">
+      <span class="tag">Chapter 2</span>
+      Nomenclature — IUPAC & Common
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(123,159,255,0.12)">📖</div>IUPAC System Rules</div>
+    <ul class="styled-list">
+      <li>Name = halogen prefix (fluoro/chloro/bromo/iodo) + parent alkane</li>
+      <li><strong>Rule 1:</strong> Number the chain to give the halogen the <em>lowest possible locant</em></li>
+      <li><strong>Rule 2:</strong> If multiple halogens, list in alphabetical order (e.g., 1-bromo-2-chloro…)</li>
+      <li>When numbering conflict: lower set of locants wins at first point of difference</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(224,92,123,0.12)">🏷️</div>Common Name System</div>
+    <p style="font-size:0.9rem;color:var(--muted);margin-bottom:14px">Format: <strong style="color:var(--text)">Alkyl group name + Halide</strong></p>
+    <table class="styled-table">
+      <thead><tr><th>Common Prefix</th><th>Meaning</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>n-</td><td>Normal (unbranched)</td><td>\(CH_3CH_2CH_2Cl\) → n-Propyl chloride</td></tr>
+        <tr><td>iso-</td><td>Branched at C2 (isopropyl)</td><td>\((CH_3)_2CHCl\) → Isopropyl chloride</td></tr>
+        <tr><td>sec-</td><td>Secondary (2°) carbon</td><td>sec-Butyl bromide</td></tr>
+        <tr><td>tert-</td><td>Tertiary (3°) carbon</td><td>tert-Butyl chloride</td></tr>
+        <tr><td>neo-</td><td>2,2-dimethyl pattern</td><td>Neopentyl chloride</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="highlight-box green">
+    <strong>Quick Tip</strong>
+    IUPAC is the universal standard. Common names are tested but only for the simplest structures (methyl, ethyl, n-propyl, isopropyl, n-butyl, sec-butyl, isobutyl, tert-butyl).
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ BONDING ═══════════════════════════════ -->
+<div class="section" id="section-bonding">
+  <div class="section-hero">
+    <div class="section-title">
+      <span class="tag">Chapter 3</span>
+      C–X Bond: Physical Properties
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(94,231,176,0.12)">📊</div>Bond Data Table</div>
+    <table class="styled-table">
+      <thead><tr><th>Bond</th><th>Length (pm)</th><th>Enthalpy (kJ/mol)</th><th>Dipole (D)</th></tr></thead>
+      <tbody>
+        <tr><td>C–F</td><td>139</td><td>452</td><td>1.847</td></tr>
+        <tr><td>C–Cl</td><td>178</td><td>339</td><td>1.860</td></tr>
+        <tr><td>C–Br</td><td>193</td><td>285</td><td>1.830</td></tr>
+        <tr><td>C–I</td><td>214</td><td>234</td><td>1.636</td></tr>
+      </tbody>
+    </table>
+    <div class="highlight-box yellow" style="margin-top:16px">
+      <strong>Trend Memory</strong>
+      Bond length ↑ going down. Bond strength ↓ going down. F has the shortest, strongest bond; I has the longest, weakest bond.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(247,201,72,0.12)">📈</div>Boiling Point Trend</div>
+    <p style="font-size:0.88rem;color:var(--muted);margin-bottom:16px">Higher molar mass → stronger van der Waals forces → higher BP</p>
+    <div id="bpTrends"></div>
+    <div class="highlight-box red" style="margin-top:16px">
+      <strong>Branching Effect</strong>
+      More branching → less surface area → weaker vdW → lower BP. n-Butyl chloride boils higher than tert-Butyl chloride.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(123,159,255,0.12)">💧</div>Solubility & Density</div>
+    <ul class="styled-list">
+      <li><strong>Water:</strong> RX ≈ insoluble — cannot form H-bonds with water (no O–H or N–H)</li>
+      <li><strong>Organic solvents:</strong> RX dissolves readily (like dissolves like)</li>
+      <li><strong>Density order:</strong> \(RI > RBr > RCl\) — denser halogens give denser compounds; also increases with number of halogens</li>
+      <li>\(RF\) is often lighter than water (despite F being dense) due to C–F bond character</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ PREP ═══════════════════════════════ -->
+<div class="section" id="section-prep">
+  <div class="section-hero">
+    <div class="section-title">
+      <span class="tag">Chapter 4</span>
+      Preparation Methods
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(94,231,176,0.12)">🔬</div>From Alcohols — Click to Expand</div>
+    <div class="rxn-grid" id="rxn-from-alcohols"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(247,201,72,0.12)">🔄</div>Halogen Exchange Reactions</div>
+    <div class="rxn-grid" id="rxn-exchange"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(224,92,123,0.12)">⚗️</div>From Hydrocarbons & Silver Salts</div>
+    <div class="rxn-grid" id="rxn-hydrocarbon"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(123,159,255,0.12)">💎</div>Aryl Halide Preparation</div>
+    <div class="rxn-grid" id="rxn-aryl"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ SN1 vs SN2 ═══════════════════════════════ -->
+<div class="section" id="section-sn">
+  <div class="section-hero">
+    <div class="section-title">
+      <span class="tag">Chapter 5</span>
+      Nucleophilic Substitution
+    </div>
+  </div>
+
+  <div class="compare-toggle">
+    <button class="cmp-btn active" onclick="showCompare('both', this)">Both</button>
+    <button class="cmp-btn" onclick="showCompare('sn1', this)">SN1 Only</button>
+    <button class="cmp-btn" onclick="showCompare('sn2', this)">SN2 Only</button>
+  </div>
+
+  <div id="compare-table"></div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(94,231,176,0.12)">🔀</div>SN1 Mechanism Steps</div>
+    <div class="stepper">
+      <div class="step">
+        <div class="step-line"><div class="step-dot">1</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <h4>Ionisation — Rate Determining Step</h4>
+          <p>The C–X bond breaks heterolytically. The leaving group departs with both electrons, forming a <strong style="color:var(--accent3)">carbocation</strong> intermediate. Rate depends only on [RX]. Favoured by polar protic solvents that stabilise ions.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot">2</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <h4>Nucleophilic Attack</h4>
+          <p>The nucleophile attacks the planar sp² carbocation from <em>both faces</em> equally → <strong style="color:var(--accent2)">racemisation</strong> (50:50 enantiomers). This is the fast step.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot">!</div></div>
+        <div class="step-body">
+          <h4>Consequence: Rearrangement Possible</h4>
+          <p>Because a carbocation forms, 1,2-hydride or alkyl shifts can occur if they yield a more stable carbocation. SN2 never rearranges.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(123,159,255,0.12)">⚡</div>SN2 Mechanism — Concerted</div>
+    <div class="stepper">
+      <div class="step">
+        <div class="step-line"><div class="step-dot">1</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <h4>Back-Side Attack</h4>
+          <p>Strong nucleophile attacks the carbon <em>180° opposite</em> the leaving group simultaneously as the leaving group departs. One single step — no intermediate.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot">2</div></div>
+        <div class="step-body">
+          <h4>Walden Inversion (Umbrella Flip)</h4>
+          <p>The three remaining substituents invert like an umbrella. Complete <strong style="color:var(--accent)">inversion of configuration</strong> — R becomes S and vice versa. 100% stereospecific.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(224,92,123,0.12)">⚖️</div>Nucleophilicity vs. Basicity Rules</div>
+    <div class="highlight-box green">
+      <strong>Rule 1 — Kinetic vs Thermodynamic</strong>
+      Nucleophilicity is a <em>rate</em> (kinetic) property measured by how fast it attacks. Basicity is an <em>equilibrium</em> (thermodynamic) property. They don't always correlate!
+    </div>
+    <div class="highlight-box red">
+      <strong>Rule 2 — Steric Bulk</strong>
+      Bulky base (e.g., \(t\text{-}BuO^-\)) → high basicity but LOW nucleophilicity. Steric hindrance blocks the backside attack. It acts as a base, not a nucleophile → favours E2.
+    </div>
+    <div class="highlight-box yellow">
+      <strong>Rule 3 — Group 17 Trend (Protic Solvent)</strong>
+      Nucleophilicity: \(I^- > Br^- > Cl^- > F^-\) (larger, more polarisable, less solvated). Basicity reverses: \(F^- > Cl^- > Br^- > I^-\). In aprotic solvents, order becomes basicity order.
+    </div>
+    <div class="highlight-box blue">
+      <strong>Rule 4 — Charge Effect</strong>
+      Anionic nucleophiles are always better than their neutral counterparts: \(OH^- > H_2O\), \(RO^- > ROH\), \(NH_2^- > NH_3\).
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ ELIMINATION ═══════════════════════════════ -->
+<div class="section" id="section-elimination">
+  <div class="section-hero">
+    <div class="section-title">
+      <span class="tag">Chapter 6</span>
+      Elimination Reactions (E2)
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(94,231,176,0.12)">📐</div>E2 Technical Specs</div>
+    <table class="styled-table">
+      <thead><tr><th>Parameter</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Kinetics</td><td>2nd order: Rate ∝ [RX][Base] — both substrate and base in rate law</td></tr>
+        <tr><td>Mechanism</td><td>Concerted, one-step: H and X leave simultaneously (anti-periplanar)</td></tr>
+        <tr><td>Stereochemistry</td><td>Anti-elimination: H and X must be anti-periplanar (180°)</td></tr>
+        <tr><td>Intermediate</td><td>None — pentacoordinate transition state only</td></tr>
+        <tr><td>Rearrangement</td><td>Impossible (no carbocation formed)</td></tr>
+        <tr><td>Leaving group order</td><td>\(RI > RBr > RCl > RF\) — bond breaking is rate-determining</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(247,201,72,0.12)">🎯</div>Regioselectivity — Which Alkene Forms?</div>
+    <div class="highlight-box green">
+      <strong>Zaitsev (Saytzeff) Rule — More Substituted Product</strong>
+      Small, unhindered base (e.g., alc. KOH, \(EtO^-\)) → removes H from the carbon with fewer H's → gives the <strong>more substituted</strong> (more stable) alkene. Most thermodynamically stable product.
+    </div>
+    <div class="highlight-box blue">
+      <strong>Hofmann Rule — Less Substituted Product</strong>
+      Bulky base (e.g., \(t\text{-}BuOK\)) → cannot approach the hindered carbon → removes H from the least hindered carbon → gives <strong>less substituted</strong> alkene (Hofmann product).
+    </div>
+    <div class="highlight-box yellow">
+      <strong>Rate ∝ Alkene Stability</strong>
+      More stable product alkene → lower transition state energy → faster rate. Tetrasubstituted &gt; trisubstituted &gt; disubstituted &gt; monosubstituted &gt; ethylene.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(224,92,123,0.12)">🆚</div>When Does Elimination Beat Substitution?</div>
+    <ul class="styled-list">
+      <li>Bulky base/nucleophile → E2 over SN2</li>
+      <li>High temperature → E2 favoured (entropy-driven, two products from one)</li>
+      <li>Tertiary substrate + strong base → E2 (SN2 blocked by steric hindrance; SN1 competes)</li>
+      <li>Strong, non-bulky nucleophile + primary substrate → SN2 dominates</li>
+      <li>\(NaNH_2\): extremely strong base → forces E2 even on difficult substrates</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ POLYHALOGEN ═══════════════════════════════ -->
+<div class="section" id="section-polyhalogen">
+  <div class="section-hero">
+    <div class="section-title">
+      <span class="tag">Chapter 7</span>
+      Polyhalogen Compounds
+    </div>
+  </div>
+
+  <div id="polyhalogen-cards"></div>
+</div>
+
+<!-- ═══════════════════════════════ ARYL INERTNESS ═══════════════════════════════ -->
+<div class="section" id="section-aryl">
+  <div class="section-hero">
+    <div class="section-title">
+      <span class="tag">Chapter 8</span>
+      Aryl Halide Inertness in SN
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(123,159,255,0.12)">🛡️</div>4 Reasons Aryl Halides Don't Undergo SN</div>
+    <div class="stepper">
+      <div class="step">
+        <div class="step-line"><div class="step-dot">1</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <h4>Resonance Donation</h4>
+          <p>The lone pairs on X delocalise into the ring π system → partial C–X double bond character → shorter, stronger bond. Cannot be broken easily.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot">2</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <h4>sp² Carbon is More Electronegative</h4>
+          <p>The aryl carbon is sp² hybridised → higher s-character → more electronegative → holds onto the bonding electrons more tightly → shorter, stronger C–X bond vs. sp³.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot">3</div><div class="step-connector"></div></div>
+        <div class="step-body">
+          <h4>Phenyl Cation Instability (blocks SN1)</h4>
+          <p>For SN1, a phenyl cation would have to form at an sp² carbon. This is extremely unstable (sp² orbital can't overlap with empty orbital efficiently) → SN1 is impossible for aryl halides.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-line"><div class="step-dot">4</div></div>
+        <div class="step-body">
+          <h4>π Cloud Repulsion (blocks SN2)</h4>
+          <p>The electron-rich aromatic π cloud above and below the ring electrostatically repels incoming nucleophiles → backside attack required for SN2 is completely blocked.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><div class="icon" style="background:rgba(94,231,176,0.12)">🧪</div>Quick Reagent Reference</div>
+    <table class="styled-table">
+      <thead><tr><th>Reagent</th><th>Reaction Type</th><th>Product</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>aq. KOH</td><td>Substitution (SN)</td><td>\(RX \to ROH\)</td><td>\(OH^-\) = small, hard nucleophile</td></tr>
+        <tr><td>alc. KOH</td><td>Elimination (E2)</td><td>\(RX \to\) Alkene</td><td>Alkoxide \(RO^-\) acts as strong base</td></tr>
+        <tr><td>\(NaNH_2\)</td><td>Elimination (E2)</td><td>Alkene (even difficult)</td><td>Very strong base, forces deprotonation</td></tr>
+        <tr><td>Na / Dry ether</td><td>Wurtz coupling</td><td>\(2RX \to R\text{-}R\)</td><td>Radical chain reaction</td></tr>
+        <tr><td>Mg / Dry ether</td><td>Grignard formation</td><td>\(RX \to RMgX\)</td><td>Mg inserts into C–X bond</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ FLASHCARDS ═══════════════════════════════ -->
+<div class="section" id="section-flashcards">
+  <div class="section-hero">
+    <div class="section-title">
+      <span class="tag">Study Tool</span>
+      Flashcards — Click to Flip
+    </div>
+  </div>
+
+  <div class="flashcard-container">
+    <div class="flashcard" id="mainFlashcard" onclick="flipCard()">
+      <div class="flashcard-face flashcard-front">
+        <div class="flashcard-label">Question</div>
+        <div class="flashcard-content" id="fcFront"></div>
+      </div>
+      <div class="flashcard-face flashcard-back">
+        <div class="flashcard-label">Answer</div>
+        <div class="flashcard-content" id="fcBack"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flashcard-nav">
+    <button class="fc-btn" onclick="prevCard()">← Prev</button>
+    <div class="fc-counter" id="fcCounter">1 / 20</div>
+    <button class="fc-btn" onclick="nextCard()">Next →</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ QUIZ ═══════════════════════════════ -->
+<div class="section" id="section-quiz">
+  <div class="section-hero">
+    <div class="section-title">
+      <span class="tag">Test Yourself</span>
+      Quiz — All Topics
+    </div>
+  </div>
+
+  <div id="quiz-container"></div>
+  <button class="quiz-reset-btn" onclick="resetQuiz()">↺ Reset Quiz</button>
+</div>
+
+</main>
+
+<script>
+// ══════════════════════════════════════════════════════
+// NAV
+// ══════════════════════════════════════════════════════
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('section-'+id).classList.add('active');
+  event.target.classList.add('active');
+  // re-typeset MathJax in the newly visible section
+  if(window.MathJax) MathJax.typesetPromise();
+}
+
+// ══════════════════════════════════════════════════════
+// BOILING POINT BARS
+// ══════════════════════════════════════════════════════
+const bpData = [
+  { label: 'R–I',  val: 100, color: '#e05c7b' },
+  { label: 'R–Br', val: 80,  color: '#f7c948' },
+  { label: 'R–Cl', val: 58,  color: '#5ee7b0' },
+  { label: 'R–F',  val: 35,  color: '#7b9fff' },
+];
+const bpWrap = document.getElementById('bpTrends');
+bpData.forEach(d => {
+  bpWrap.innerHTML += `
+    <div class="trend-bar-wrap">
+      <div class="trend-label">${d.label}</div>
+      <div class="trend-track">
+        <div class="trend-bar" style="width:${d.val}%;background:${d.color}">
+          <span class="trend-val">Higher ↑</span>
+        </div>
+      </div>
+    </div>`;
+});
+
+// ══════════════════════════════════════════════════════
+// REACTIONS DATA
+// ══════════════════════════════════════════════════════
+const reactions = {
+  'rxn-from-alcohols': [
+    {
+      name: "Lucas / Grooves Process",
+      eq: "R–OH + HCl → R–Cl + H₂O",
+      tags: ['tag-sn1','tag-sn2'],
+      tagLabels: ['SN1', 'SN2'],
+      detail: `Reagent: HCl with ZnCl₂ catalyst (ZnCl₂ activates OH as a leaving group by coordinating to it).<br><br>
+      <strong>Mechanism by substrate:</strong><br>
+      • 3° and 2°: SN1 (ionises to carbocation first, solvent-assisted)<br>
+      • 1°: SN2 (direct displacement)<br><br>
+      ZnCl₂ is essential for 1° and 2° to react (they won't react without it at room temperature).`
+    },
+    {
+      name: "Phosphorus Trihalide (PX₃)",
+      eq: "3 R–OH + PX₃ → 3 R–X + H₃PO₃",
+      tags: ['tag-sn2'],
+      tagLabels: ['SN2'],
+      detail: `Mechanism: SN2 — proceeds with inversion of configuration (Walden inversion).<br><br>
+      Driving force: Very strong P–O bond affinity. Phosphorus preferentially bonds to oxygen.<br><br>
+      Also: R–OH + PCl₅ → R–Cl + POCl₃ + HCl (also SN2, also inversion).`
+    },
+    {
+      name: "Darzen's Procedure (SOCl₂)",
+      eq: "R–OH + SOCl₂ → R–Cl + SO₂↑ + HCl↑",
+      tags: ['tag-sn2'],
+      tagLabels: ['SNi'],
+      detail: `Mechanism: SNi (substitution nucleophilic internal) — retention of configuration because the nucleophile attacks from the same face as the leaving group through a cyclic intermediate.<br><br>
+      <strong>Key Advantage:</strong> Both byproducts (SO₂ and HCl) are gases — they escape spontaneously, giving self-purifying reaction. No aqueous workup needed. Product is pure R–Cl.`
+    }
+  ],
+  'rxn-exchange': [
+    {
+      name: "Finkelstein Reaction",
+      eq: "R–Cl (or R–Br) + NaI → R–I + NaCl↓ (or NaBr↓)",
+      tags: ['tag-sn2'],
+      tagLabels: ['SN2'],
+      detail: `Solvent: Acetone (polar aprotic).<br><br>
+      Driving force: NaCl and NaBr are insoluble in acetone and precipitate out → shifts equilibrium forward by Le Chatelier's principle.<br><br>
+      NaI is soluble in acetone → I⁻ is the nucleophile. Product R–I is soluble in acetone.`
+    },
+    {
+      name: "Swarts Reaction",
+      eq: "R–X + metallic fluoride (AgF, CoF₂, SbF₃) → R–F",
+      tags: ['tag-sn2'],
+      tagLabels: ['Exchange'],
+      detail: `Used to introduce fluorine, which is hard to add by direct fluorination (too violent).<br><br>
+      Reagents: AgF, HgF₂, CoF₂, or SbF₃ — all metal fluorides.<br><br>
+      The strong metal–halogen bonds drive the reaction. AgF is most common in exams.`
+    }
+  ],
+  'rxn-hydrocarbon': [
+    {
+      name: "Free Radical Halogenation",
+      eq: "R–H + X₂ → R–X (mixture) [hν]",
+      tags: ['tag-free'],
+      tagLabels: ['Free Radical'],
+      detail: `Initiation: X₂ → 2X• (by UV light or heat)<br>
+      Propagation: X• + R–H → HX + R• then R• + X₂ → R–X + X•<br>
+      Termination: radical combination steps.<br><br>
+      <strong>Poor selectivity</strong> — gives mixture of products (multiple positions halogenated). Selectivity: F₂ > Cl₂ > Br₂ > I₂ (reactivity). Br₂ is more selective than Cl₂.`
+    },
+    {
+      name: "Hunsdiecker Reaction",
+      eq: "RCOOAg + Br₂ → R–Br + CO₂ + AgBr [CCl₄, Δ]",
+      tags: ['tag-free'],
+      tagLabels: ['Free Radical'],
+      detail: `Substrate: Silver salt of a carboxylic acid (RCOOAg).<br>
+      Mechanism: Free radical — forms RCO₂• radical, which loses CO₂ to give R• radical, then R• + Br₂ → R–Br + Br•.<br><br>
+      Net result: decarboxylative halogenation. Carbon chain is shortened by one carbon.<br><br>
+      Solvent: CCl₄ (inert). Heat required.`
+    }
+  ],
+  'rxn-aryl': [
+    {
+      name: "Sandmeyer's Reaction",
+      eq: "Ar–N₂⁺X⁻ + Cu₂X₂/HX → Ar–X + N₂",
+      tags: ['tag-ox'],
+      tagLabels: ['Diazotisation'],
+      detail: `Converts diazonium salt to Ar–Cl or Ar–Br using copper(I) halide catalyst Cu₂X₂ (cuprous halide) in the corresponding HX acid.<br><br>
+      X = Cl or Br only. For Ar–F, use Balz-Schiemann. For Ar–I, use KI directly (no copper needed).<br><br>
+      Mechanism: Radical or SET (single electron transfer).`
+    },
+    {
+      name: "Gattermann Reaction",
+      eq: "Ar–N₂⁺X⁻ + Cu/HX → Ar–X + N₂ + CuX",
+      tags: ['tag-ox'],
+      tagLabels: ['Diazotisation'],
+      detail: `Similar to Sandmeyer's but uses copper metal (Cu powder) instead of cuprous halide salt.<br><br>
+      Less reliable/less preferred than Sandmeyer's but still tested. X = Cl or Br.<br><br>
+      Gattermann modification for Ar–CN uses Cu/KCN.`
+    }
+  ]
+};
+
+Object.keys(reactions).forEach(containerId => {
+  const container = document.getElementById(containerId);
+  reactions[containerId].forEach((rxn, i) => {
+    const tagHtml = rxn.tags.map((t,j) => `<span class="rxn-tag ${t}">${rxn.tagLabels[j]}</span>`).join('');
+    container.innerHTML += `
+      <div class="rxn-card" onclick="toggleRxn('rxn-${containerId}-${i}')">
+        <div class="rxn-name">${rxn.name}</div>
+        <div class="rxn-equation">${rxn.eq}</div>
+        <div>${tagHtml}</div>
+        <div class="rxn-detail" id="rxn-${containerId}-${i}">${rxn.detail}</div>
+      </div>`;
+  });
+});
+
+function toggleRxn(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+  if(window.MathJax) MathJax.typesetPromise([el]);
+}
+
+// ══════════════════════════════════════════════════════
+// SN1 vs SN2 COMPARISON TABLE
+// ══════════════════════════════════════════════════════
+const snData = [
+  { param: "Rate Law",           sn1: "Rate = k[RX] — 1st order",                  sn2: "Rate = k[RX][Nu] — 2nd order" },
+  { param: "Molecularity",       sn1: "Unimolecular (1)",                           sn2: "Bimolecular (2)" },
+  { param: "Steps",              sn1: "2-step (slow + fast)",                       sn2: "1-step (concerted)" },
+  { param: "Intermediate",       sn1: "Carbocation (sp², planar)",                  sn2: "Pentacoordinate transition state only" },
+  { param: "Stereochemistry",    sn1: "Racemisation (50:50 R/S)",                   sn2: "Walden Inversion (100% inversion)" },
+  { param: "Substrate",         sn1: "3° >> 2° > 1° — tertiary best",              sn2: "Methyl > 1° > 2° > 3° — least hindered" },
+  { param: "Solvent",            sn1: "Polar protic (H₂O, EtOH, ROH)",             sn2: "Polar aprotic (DMSO, DMF, acetone)" },
+  { param: "Nucleophile",        sn1: "Weak/neutral (H₂O, ROH) acceptable",        sn2: "Strong/anionic (OH⁻, CN⁻, I⁻) required" },
+  { param: "Rearrangement",      sn1: "Possible (carbocation can shift)",           sn2: "Impossible (no carbocation)" },
+  { param: "Temperature",        sn1: "Lower T fine (less energy barrier)",        sn2: "Less sensitive to T" },
+];
+
+function showCompare(mode, btn) {
+  document.querySelectorAll('.cmp-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const container = document.getElementById('compare-table');
+  const sn1Color = mode === 'sn2' ? 'opacity:0.3' : '';
+  const sn2Color = mode === 'sn1' ? 'opacity:0.3' : '';
+  let html = `<div class="card"><table class="styled-table">
+    <thead><tr>
+      <th>Parameter</th>
+      <th style="${sn1Color};color:var(--accent3)">SN1</th>
+      <th style="${sn2Color};color:var(--accent)">SN2</th>
+    </tr></thead><tbody>`;
+  snData.forEach(row => {
+    html += `<tr>
+      <td>${row.param}</td>
+      <td style="${sn1Color}">${row.sn1}</td>
+      <td style="${sn2Color}">${row.sn2}</td>
+    </tr>`;
+  });
+  html += `</tbody></table></div>`;
+  container.innerHTML = html;
+}
+showCompare('both', document.querySelector('.cmp-btn'));
+
+// ══════════════════════════════════════════════════════
+// POLYHALOGEN CARDS
+// ══════════════════════════════════════════════════════
+const polyData = [
+  {
+    name: "Dichloromethane (CH₂Cl₂)",
+    color: 'var(--accent4)',
+    uses: ["Paint remover", "Aerosol propellant", "Drug manufacturing solvent", "Metal cleaner"],
+    effects: "CNS damage at high exposure. Even low-level exposure impairs hearing and vision. Skin contact causes intense burning due to rapid penetration.",
+    notes: ""
+  },
+  {
+    name: "Trichloromethane / Chloroform (CHCl₃)",
+    color: 'var(--accent2)',
+    uses: ["Production of R-22 refrigerant (HCFC-22)", "Solvent for fats, alkaloids, and rubber"],
+    effects: "CNS depressant (historically used as anaesthetic). Chronic exposure causes liver and kidney damage.",
+    notes: "⚠️ Storage: Must be stored in dark, completely full bottles with 1% ethanol added. Light induces oxidation forming phosgene (COCl₂) — a deadly gas!"
+  },
+  {
+    name: "Triiodomethane / Iodoform (CHI₃)",
+    color: 'var(--accent)',
+    uses: ["Antiseptic"],
+    effects: "Relatively low toxicity in antiseptic use.",
+    notes: "The antiseptic action is NOT due to CHI₃ itself — it's due to the liberation of free I₂ which is the actual antimicrobial agent. Yellow crystalline solid with characteristic smell."
+  },
+  {
+    name: "Tetrachloromethane / Carbon Tetrachloride (CCl₄)",
+    color: 'var(--accent3)',
+    uses: ["Fire extinguisher brand: Pyrene", "Industrial cleaning fluid (dry cleaning)"],
+    effects: "Major ozone depleter. Causes liver cancer and nerve cell damage. Highly toxic.",
+    notes: "Largely banned globally due to toxicity and ozone impact."
+  },
+  {
+    name: "Freons (CFCs) — e.g. Freon-12 (CCl₂F₂)",
+    color: '#c07fff',
+    uses: ["Refrigerants", "Aerosol propellants"],
+    effects: "Extremely chemically stable → migrate to stratosphere unchanged → UV breaks them down into Cl• radicals → catalytic radical chain depletion of ozone layer.",
+    notes: "Freon-12 = CCl₂F₂ (dichlorodifluoromethane). Banned by Montreal Protocol. Replaced by HFCs (no Cl)."
+  },
+  {
+    name: "DDT (p,p'-Dichlorodiphenyltrichloroethane)",
+    color: 'var(--accent3)',
+    uses: ["Formerly used as pesticide/insecticide (malaria control)"],
+    effects: "Non-biodegradable → bioaccumulates in food chains (biomagnification). Lipid-soluble → stores in fat. Toxic to fish and birds (eggshell thinning). Probable human carcinogen.",
+    notes: "Preparation: Chloral (CCl₃CHO) + Chlorobenzene (C₆H₅Cl) in the presence of concentrated H₂SO₄ (Friedel-Crafts type condensation). Banned in most countries."
+  }
+];
+
+const phContainer = document.getElementById('polyhalogen-cards');
+polyData.forEach(p => {
+  phContainer.innerHTML += `
+    <div class="card" style="border-left:3px solid ${p.color}">
+      <div class="card-title"><span style="color:${p.color}">${p.name}</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:12px">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px">Uses</div>
+          <ul class="styled-list">${p.uses.map(u=>`<li>${u}</li>`).join('')}</ul>
+        </div>
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:8px">Health / Environmental Effects</div>
+          <p style="font-size:0.87rem;line-height:1.6">${p.effects}</p>
+        </div>
+      </div>
+      ${p.notes ? `<div class="highlight-box yellow" style="margin-top:8px"><strong>Key Note</strong>${p.notes}</div>` : ''}
+    </div>`;
+});
+
+// ══════════════════════════════════════════════════════
+// FLASHCARDS DATA
+// ══════════════════════════════════════════════════════
+const flashcards = [
+  { q: "What is the reactivity order in SN2?", a: "Methyl > 1° > 2° > 3° (least steric hindrance = fastest SN2)" },
+  { q: "What is the reactivity order in SN1?", a: "3° > 2° > 1° > Methyl (most stable carbocation forms fastest)" },
+  { q: "What solvent favours SN1?", a: "Polar protic solvents (H₂O, EtOH, ROH) — stabilise carbocation and leaving group by solvation" },
+  { q: "What solvent favours SN2?", a: "Polar aprotic solvents (DMSO, DMF, Acetone) — dissolve ionic reagents but don't solvate nucleophile, keeping it reactive" },
+  { q: "State the Zaitsev (Saytzeff) rule.", a: "With a small base (alc. KOH), the major elimination product is the MORE substituted (more stable) alkene." },
+  { q: "State the Hofmann rule.", a: "With a bulky base (t-BuOK), the major product is the LESS substituted alkene (Hofmann product) due to steric approach control." },
+  { q: "Why are aryl halides unreactive in SN reactions?", a: "4 reasons: (1) Resonance donation strengthens C–X; (2) sp² C is more electronegative; (3) Phenyl cation is too unstable for SN1; (4) π cloud repels nucleophiles (blocks SN2)" },
+  { q: "What is the Finkelstein reaction?", a: "R–Cl/Br + NaI → R–I + NaCl/NaBr↓ in acetone. NaCl/NaBr precipitate out, driving equilibrium forward." },
+  { q: "What is the Swarts reaction?", a: "R–X + metallic fluoride (AgF, CoF₂, SbF₃) → R–F. Used to introduce fluorine safely." },
+  { q: "In Darzen's procedure, what are the byproducts and why is this an advantage?", a: "SO₂ (gas) and HCl (gas) — both escape, spontaneously purifying the product. No complex workup needed." },
+  { q: "What is the mechanism of Darzen's procedure (SOCl₂)?", a: "SNi — substitution nucleophilic internal. Retention of configuration via a cyclic chlorosulfite intermediate." },
+  { q: "Why does chloroform need 1% ethanol and dark storage?", a: "Light oxidises CHCl₃ to phosgene (COCl₂), a deadly gas. Ethanol reacts with any phosgene formed, neutralising it." },
+  { q: "What is the antiseptic agent in iodoform (CHI₃)?", a: "Free iodine (I₂) released from CHI₃. CHI₃ itself is not the active antiseptic." },
+  { q: "State the nucleophilicity trend down Group 17 in protic solvents.", a: "I⁻ > Br⁻ > Cl⁻ > F⁻ (larger ions are less solvated, more polarisable → better nucleophiles in protic solvent)" },
+  { q: "How does the basicity trend in Group 17 compare to nucleophilicity?", a: "Basicity reverses: F⁻ > Cl⁻ > Br⁻ > I⁻. The strongest base is the weakest nucleophile in protic solvents." },
+  { q: "What is the Hunsdiecker reaction?", a: "RCOOAg + Br₂ → R–Br + CO₂ + AgBr (CCl₄, Δ). Free radical mechanism. Chain is shortened by one carbon." },
+  { q: "What does the Sandmeyer reaction convert and what is needed?", a: "Converts aryl diazonium salt (Ar–N₂⁺X⁻) to Ar–Cl or Ar–Br using Cu₂X₂/HX catalyst. For Ar–I, just KI (no copper)." },
+  { q: "What is Walden inversion and when does it occur?", a: "Complete inversion of configuration at the reaction centre, like an umbrella flipping. Occurs in ALL SN2 reactions." },
+  { q: "What are the key environmental concerns about DDT?", a: "Non-biodegradable, lipid-soluble (bioaccumulates), toxic to fish and birds (eggshell thinning), probable carcinogen." },
+  { q: "State the boiling point order for isomeric alkyl halides by size.", a: "R–I > R–Br > R–Cl > R–F (van der Waals forces increase with molar mass)" },
+];
+
+let currentCard = 0;
+let isFlipped = false;
+
+function updateCard() {
+  isFlipped = false;
+  document.getElementById('mainFlashcard').classList.remove('flipped');
+  document.getElementById('fcFront').innerHTML = flashcards[currentCard].q;
+  document.getElementById('fcBack').innerHTML = flashcards[currentCard].a;
+  document.getElementById('fcCounter').textContent = `${currentCard+1} / ${flashcards.length}`;
+  if(window.MathJax) MathJax.typesetPromise([document.getElementById('mainFlashcard')]);
+}
+function flipCard() {
+  isFlipped = !isFlipped;
+  document.getElementById('mainFlashcard').classList.toggle('flipped', isFlipped);
+}
+function nextCard() { currentCard = (currentCard + 1) % flashcards.length; updateCard(); }
+function prevCard() { currentCard = (currentCard - 1 + flashcards.length) % flashcards.length; updateCard(); }
+updateCard();
+
+// ══════════════════════════════════════════════════════
+// QUIZ
+// ══════════════════════════════════════════════════════
+const quizQuestions = [
+  {
+    q: "Which substrate reacts fastest in an SN2 reaction?",
+    opts: ["tert-Butyl bromide", "sec-Butyl bromide", "Methyl iodide", "n-Propyl chloride"],
+    ans: 2,
+    fb: "SN2 reactivity: Methyl > 1° > 2° > 3°. Methyl iodide has no steric hindrance AND iodide is an excellent leaving group. Tertiary substrates are the slowest."
+  },
+  {
+    q: "In the Finkelstein reaction, why must acetone be used as the solvent?",
+    opts: [
+      "Acetone dissolves NaI but not NaCl/NaBr, so the precipitate drives equilibrium",
+      "Acetone speeds up the SN1 mechanism",
+      "Acetone stabilises the carbocation intermediate",
+      "Acetone reacts with the alkyl halide to form a ketone"
+    ],
+    ans: 0,
+    fb: "In acetone: NaI is soluble (source of I⁻ nucleophile) but NaCl and NaBr are insoluble (precipitate). This removes products from solution, shifting the equilibrium forward by Le Chatelier's principle."
+  },
+  {
+    q: "A chemist treats a secondary alkyl bromide with t-BuOK in hot t-BuOH. What is the primary product?",
+    opts: ["Secondary alcohol", "Tertiary alcohol", "More substituted alkene (Zaitsev)", "Less substituted alkene (Hofmann)"],
+    ans: 3,
+    fb: "t-BuOK is a bulky base. Bulky bases cannot approach the hindered carbon, so they abstract the proton from the least hindered (less substituted) carbon → less substituted alkene = Hofmann product."
+  },
+  {
+    q: "Which of the following has the SHORTEST C–X bond length?",
+    opts: ["C–I", "C–Br", "C–Cl", "C–F"],
+    ans: 3,
+    fb: "C–F is the shortest (139 pm) and strongest (452 kJ/mol) bond. Bond length increases going down: C–F < C–Cl < C–Br < C–I."
+  },
+  {
+    q: "What is the stereochemical outcome of an SN1 reaction at a chiral centre?",
+    opts: ["100% retention of configuration", "100% inversion (Walden inversion)", "Racemisation (mixture of enantiomers)", "Formation of a meso compound"],
+    ans: 2,
+    fb: "SN1 forms a planar sp² carbocation. The nucleophile can attack from either face with equal probability → ~50% retention + 50% inversion = racemisation."
+  },
+  {
+    q: "Why must chloroform be stored in dark, completely full bottles with 1% ethanol?",
+    opts: [
+      "Light causes polymerisation of chloroform",
+      "Light oxidises CHCl₃ to phosgene (COCl₂); ethanol neutralises any phosgene formed",
+      "Ethanol prevents evaporation of chloroform",
+      "Light causes chloroform to decompose to CCl₄"
+    ],
+    ans: 1,
+    fb: "Light-induced oxidation: CHCl₃ + [O] → COCl₂ (phosgene, very toxic). Ethanol reacts with phosgene if formed. Dark storage and full bottles (minimal O₂ headspace) prevent this."
+  },
+  {
+    q: "Which reagent converts R–OH to R–Cl with RETENTION of configuration?",
+    opts: ["PCl₃ (phosphorus trichloride)", "SOCl₂ (thionyl chloride)", "HCl/ZnCl₂", "PCl₅"],
+    ans: 1,
+    fb: "SOCl₂ proceeds via SNi mechanism (substitution nucleophilic internal) — the nucleophile attacks from the same face as the leaving group through a cyclic chlorosulfite intermediate → retention of configuration."
+  },
+  {
+    q: "Give the correct nucleophilicity order in a polar protic solvent.",
+    opts: [
+      "F⁻ > Cl⁻ > Br⁻ > I⁻",
+      "I⁻ > Br⁻ > Cl⁻ > F⁻",
+      "Cl⁻ > I⁻ > Br⁻ > F⁻",
+      "All halides have equal nucleophilicity"
+    ],
+    ans: 1,
+    fb: "In protic solvents, larger ions are less strongly solvated (less H-bonding shell) and more polarisable → better nucleophiles. I⁻ > Br⁻ > Cl⁻ > F⁻. Note this reverses in aprotic solvents!"
+  },
+  {
+    q: "Which statement correctly describes why aryl halides are inert in SN1 reactions?",
+    opts: [
+      "The aryl carbon is too large to form a carbocation",
+      "The phenyl cation is extremely unstable (sp² orbital not suited for empty cationic centre)",
+      "Aryl halides have too low boiling points",
+      "The C–X bond in aryl halides is ionic"
+    ],
+    ans: 1,
+    fb: "An SN1 on Ar–X would require a phenyl cation at an sp² carbon. sp² carbons cannot accommodate the empty orbital required for a stable carbocation as effectively — plus ring electron density destabilises adjacent positive charge."
+  },
+  {
+    q: "In the Sandmeyer reaction, what catalyst is used to produce Ar–Cl from a diazonium salt?",
+    opts: ["Cu powder + HCl", "Cu₂Cl₂/HCl (cuprous chloride)", "FeCl₃", "CuCl₂ (cupric chloride)"],
+    ans: 1,
+    fb: "Sandmeyer's: Cu₂X₂/HX (cuprous halide). Cu₂Cl₂ + HCl for Ar–Cl; Cu₂Br₂ + HBr for Ar–Br. The Gattermann modification uses Cu metal powder instead of Cu₂X₂."
+  },
+  {
+    q: "What is the major product when n-propyl bromide is treated with alc. KOH?",
+    opts: ["n-Propanol", "Propene (1-propene)", "Propyne", "Propane"],
+    ans: 1,
+    fb: "Alc. KOH provides alkoxide (RO⁻) which is a strong, relatively unhindered base → E2 elimination. n-Propyl bromide gives propene (CH₃CH=CH₂). If aqueous KOH were used, it would give SN2 → n-propanol."
+  },
+  {
+    q: "The Hunsdiecker reaction converts RCOOAg + Br₂ to R–Br. What else is formed?",
+    opts: ["H₂O + AgOH", "CO₂ + AgBr", "CO + AgBr + H₂", "AgOBr + CO₂"],
+    ans: 1,
+    fb: "Hunsdiecker: RCOOAg + Br₂ → R–Br + CO₂ + AgBr. The mechanism is free radical: decarboxylation occurs (–CO₂), shortening the chain by one carbon. Solvent: CCl₄, with heat."
+  },
+  {
+    q: "Why does DDT persist so long in the environment?",
+    opts: [
+      "It is a gas at room temperature",
+      "It reacts with water to form stable compounds",
+      "It is non-biodegradable and lipid-soluble, leading to bioaccumulation",
+      "It forms complexes with soil minerals"
+    ],
+    ans: 2,
+    fb: "DDT is non-biodegradable (microbes cannot break it down), and its high lipid solubility means it accumulates in fat tissue. It biomagnifies up the food chain — predators at the top receive the highest doses."
+  },
+  {
+    q: "Which of the following correctly explains the boiling point trend R–I > R–Br > R–Cl > R–F for a given alkyl group?",
+    opts: [
+      "The C–X bond strength decreases in this order",
+      "The molar mass increases → stronger van der Waals (London dispersion) forces",
+      "Fluorine is the most electronegative, giving the lowest BP",
+      "Iodide ions are better leaving groups"
+    ],
+    ans: 1,
+    fb: "Boiling point depends on intermolecular forces. Larger molar mass (R–I has the most mass) → stronger London dispersion forces between molecules → higher BP. Bond strength is irrelevant to BP."
+  },
+  {
+    q: "What is the key driving force for PX₃ reacting with R–OH?",
+    opts: [
+      "High electronegativity of phosphorus",
+      "The strong affinity of phosphorus for oxygen (P–O bond strength)",
+      "Formation of a stable carbocation",
+      "The large size of the phosphorus atom"
+    ],
+    ans: 1,
+    fb: "The reaction 3R–OH + PX₃ → 3R–X + H₃PO₃ is driven by the formation of the very strong P–O bond in phosphorous acid (H₃PO₃). Phosphorus has a strong thermodynamic preference to bond to oxygen over halogens."
+  }
+];
+
+let quizAnswered = 0;
+let quizCorrect = 0;
+
+function buildQuiz() {
+  const container = document.getElementById('quiz-container');
+  container.innerHTML = '';
+  quizAnswered = 0; quizCorrect = 0;
+  updateScore();
+
+  quizQuestions.forEach((q, qi) => {
+    const optHtml = q.opts.map((o, oi) =>
+      `<button class="quiz-option" id="opt-${qi}-${oi}" onclick="answerQ(${qi},${oi})">${o}</button>`
+    ).join('');
+    container.innerHTML += `
+      <div class="quiz-card" id="qcard-${qi}">
+        <div class="quiz-number">Question ${qi+1} of ${quizQuestions.length}</div>
+        <div class="quiz-question">${q.q}</div>
+        <div class="quiz-options">${optHtml}</div>
+        <div class="quiz-feedback" id="qfb-${qi}"></div>
+      </div>`;
+  });
+  if(window.MathJax) MathJax.typesetPromise([container]);
+}
+
+function answerQ(qi, chosen) {
+  const q = quizQuestions[qi];
+  const opts = document.querySelectorAll(`[id^="opt-${qi}-"]`);
+  opts.forEach(o => o.disabled = true);
+
+  const chosenBtn = document.getElementById(`opt-${qi}-${chosen}`);
+  const correctBtn = document.getElementById(`opt-${qi}-${q.ans}`);
+
+  if(chosen === q.ans) {
+    chosenBtn.classList.add('correct');
+    quizCorrect++;
+  } else {
+    chosenBtn.classList.add('wrong');
+    correctBtn.classList.add('correct');
+  }
+
+  const fb = document.getElementById(`qfb-${qi}`);
+  fb.innerHTML = `<strong>${chosen === q.ans ? '✓ Correct!' : '✗ Incorrect'}</strong> — ${q.fb}`;
+  fb.className = `quiz-feedback show ${chosen === q.ans ? 'correct-fb' : 'wrong-fb'}`;
+
+  quizAnswered++;
+  updateScore();
+  if(window.MathJax) MathJax.typesetPromise([fb]);
+}
+
+function updateScore() {
+  document.getElementById('scoreBadge').textContent = `Score: ${quizCorrect} / ${quizAnswered}`;
+  document.getElementById('progressFill').style.width = quizAnswered > 0
+    ? `${(quizAnswered / quizQuestions.length)*100}%` : '0%';
+}
+
+function resetQuiz() { buildQuiz(); }
+buildQuiz();
+
+// Run MathJax on initial visible section
+document.addEventListener('DOMContentLoaded', () => {
+  if(window.MathJax) MathJax.typesetPromise();
+});
+window.addEventListener('load', () => {
+  if(window.MathJax) MathJax.typesetPromise();
+});
+</script>
+</body>
+</html>
